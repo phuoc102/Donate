@@ -1,5 +1,87 @@
+<style>
+  .social-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      max-width: 95%;
+    }
+    
+    .social-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      transition: all 0.5s;
+    }
+
+    .social-btn:hover::before {
+      left: 100%;
+      top: 100%;
+    }
+
+    .social-btn i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .btn-text {
+      display: inline;
+    }
+
+    .btn-software    { background-color: #17a2b8; }  /* Xanh nước biển */
+    .btn-product     { background-color: #28a745; }  /* Xanh lá */
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
   <div id="donate-card" style="background: linear-gradient(135deg, #f0f4ff, #ffffff); border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 20px; text-align: center; max-width: 350px; width: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;">
+
+    <div class="social-buttons">
+
+      <a href="https://www.phuoccomputer.online/phan-mem" class="social-btn btn-software" target="_blank">
+        <i class="fas fa-laptop-code"></i> <span class="btn-text">Phần mềm Free</span>
+      </a>
+
+    </div>
+
+    <div class="social-buttons">
+
+      <a href="https://www.phuoccomputer.online/Review" class="social-btn btn-product" target="_blank">
+      <i class="fas fa-box"></i> <span class="btn-text">Sản phẩm Review</span>
+      </a>
+      
+    </div>
 
     <h2 style="color: #4CAF50; margin-bottom: 10px;">Ủng Hộ Tôi ❤️</h2>
     <p style="margin-bottom: 15px; color: #555;">Quét mã QR để donate</p>
