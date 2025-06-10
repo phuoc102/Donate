@@ -1,147 +1,54 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phước Computer - Build PC</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
-    }
+<div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+  <div id="donate-card" style="background: linear-gradient(135deg, #f0f4ff, #ffffff); border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 20px; text-align: center; max-width: 350px; width: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; position: relative;">
 
-    #pc-builder {
-      background: white;
-      max-width: 700px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+    <h2 style="color: #4CAF50; margin-bottom: 10px;">Ủng Hộ Tôi ❤️</h2>
+    <p style="margin-bottom: 15px; color: #555;">Quét mã QR để donate</p>
 
-    h2 {
-      text-align: center;
-      color: #e63946;
-      margin-bottom: 20px;
-    }
+    <div id="slider" style="display: flex; width: 200%; transition: transform 0.5s ease;">
+      <!-- BIDV QR -->
+      <div style="width: 50%; padding: 10px;">
+        <img src="https://i.postimg.cc/DzGmyGMd/image.png" alt="QR BIDV" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
+        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số tài khoản: <span id="account-bidv">0849352801</span></div>
+        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">BIDV - CN NINH THUAN PGD CHO DONG</div>
+        <button onclick="copyAccount('account-bidv')" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#43a047'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)'">Sao chép số tài khoản</button>
+      </div>
 
-    .component {
-      margin-bottom: 20px;
-    }
+      <!-- MoMo QR -->
+      <div style="width: 50%; padding: 10px;">
+        <img src="https://i.postimg.cc/fLqMZTvQ/image.png" alt="QR MoMo" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
+        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số điện thoại: <span id="account-momo">0849352801</span></div>
+        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Ví MoMo</div>
+        <button onclick="copyAccount('account-momo')" style="background-color: #e83e8c; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#d63384'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#e83e8c'; this.style.transform='scale(1)'">Sao chép số MoMo</button>
+      </div>
+    </div>
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
+    <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px;">
+      <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo" onclick="switchToMomo()" style="width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.2)'">
 
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Logo_BIDV.svg/512px-Logo_BIDV.svg.png" alt="BIDV" onclick="switchToBIDV()" style="width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.2)'">
+    </div>
 
-    #summary {
-      margin-top: 30px;
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    #summary p {
-      margin: 10px 0;
-    }
-
-    #totalPrice {
-      font-size: 20px;
-      color: #007bff;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-<div id="pc-builder">
-  <h2>Phước Computer - Build PC</h2>
-
-  <div class="component">
-    <label>🧠 Chọn CPU:</label>
-    <select onchange="updateConfig()" id="cpu">
-      <option data-price="0" value="None">Trống</option>
-      <option data-price="3500000" value="Intel Core i5 10400F">Intel Core i5 10400F - 3.5 triệu</option>
-      <option data-price="4200000" value="Intel Core i5 12400F">Intel Core i5 12400F - 4.2 triệu</option>
-      <option data-price="5500000" value="Intel Core i5 13400F">Intel Core i5 13400F - 5.5 triệu</option>
-    </select>
-  </div>
-
-  <div class="component">
-    <label>💾 Chọn RAM:</label>
-    <select onchange="updateConfig()" id="ram">
-      <option data-price="900000" value="16GB DDR4">16GB DDR4 - 900K</option>
-      <option data-price="1700000" value="32GB DDR4">32GB DDR4 - 1.7 triệu</option>
-    </select>
-  </div>
-
-  <div class="component">
-    <label>🎮 Chọn VGA:</label>
-    <select onchange="updateConfig()" id="vga">
-      <option data-price="2500000" value="RX 580 2048SP">RX 580 2048SP - 2.5 triệu</option>
-      <option data-price="4500000" value="RTX 2060">RTX 2060 - 4.5 triệu</option>
-      <option data-price="6500000" value="RTX 3060">RTX 3060 - 6.5 triệu</option>
-    </select>
-  </div>
-
-  <div class="component">
-    <label>💽 Chọn Ổ cứng SSD:</label>
-    <select onchange="updateConfig()" id="ssd">
-      <option data-price="700000" value="SSD 240GB">SSD 240GB - 700K</option>
-      <option data-price="1000000" value="SSD 512GB">SSD 512GB - 1 triệu</option>
-    </select>
-  </div>
-
-  <div class="component">
-    <label>⚡ Chọn Nguồn PSU:</label>
-    <select onchange="updateConfig()" id="psu">
-      <option data-price="600000" value="500W Xigmatek">500W Xigmatek - 600K</option>
-      <option data-price="950000" value="650W CoolerMaster">650W CoolerMaster - 950K</option>
-    </select>
-  </div>
-
-  <div class="component">
-    <label>🖥️ Chọn Vỏ Case:</label>
-    <select onchange="updateConfig()" id="case">
-      <option data-price="500000" value="Vỏ thường RGB">Vỏ thường RGB - 500K</option>
-      <option data-price="950000" value="Xigmatek NYX">Xigmatek NYX - 950K</option>
-    </select>
-  </div>
-
-  <div id="summary">
-    <p><strong>Cấu hình đã chọn:</strong> <span id="configText"></span></p>
-    <p><strong>Tổng giá:</strong> <span id="totalPrice">0</span> VND</p>
+    <p id="copy-message" style="color: green; font-size: 14px; margin-top: 10px; display: none;">Đã sao chép!</p>
   </div>
 </div>
 
 <script>
-function updateConfig() {
-  const parts = ["cpu", "ram", "vga", "ssd", "psu", "case"];
-  let total = 0;
-  let configText = "";
+  function copyAccount(id) {
+    var accountNumber = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(accountNumber);
+    document.getElementById("copy-message").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("copy-message").style.display = "none";
+    }, 2000);
+  }
 
-  parts.forEach(id => {
-    const select = document.getElementById(id);
-    const option = select.options[select.selectedIndex];
-    const price = parseInt(option.getAttribute("data-price")) || 0;
-    total += price;
-    configText += option.value + ", ";
-  });
+  function switchToMomo() {
+    document.getElementById("slider").style.transform = "translateX(-50%)";
+  }
 
-  document.getElementById("configText").textContent = configText.slice(0, -2);
-  document.getElementById("totalPrice").textContent = total.toLocaleString("vi-VN");
-}
+  function switchToBIDV() {
+    document.getElementById("slider").style.transform = "translateX(0)";
+  }
 </script>
-
-</body>
-</html>
