@@ -1,27 +1,25 @@
 <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-  <div id="donate-card" style="background: linear-gradient(135deg, #f0f4ff, #ffffff); border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 20px; text-align: center; max-width: 350px; width: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; position: relative;">
+  <div id="donate-card" style="background: linear-gradient(135deg, #f0f4ff, #ffffff); border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 20px; text-align: center; max-width: 350px; width: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;">
 
     <h2 style="color: #4CAF50; margin-bottom: 10px;">Ủng Hộ Tôi ❤️</h2>
     <p style="margin-bottom: 15px; color: #555;">Quét mã QR để donate</p>
 
-    <div id="slider" style="display: flex; width: 200%; transition: transform 0.5s ease;">
-      <!-- BIDV QR -->
-      <div style="width: 50%; padding: 10px;">
-        <img src="https://i.postimg.cc/DzGmyGMd/image.png" alt="QR BIDV" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
-        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số tài khoản: <span id="account-bidv">0849352801</span></div>
-        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">BIDV - CN NINH THUAN PGD CHO DONG</div>
-        <button onclick="copyAccount('account-bidv')" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#43a047'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)'">Sao chép số tài khoản</button>
-      </div>
+    <!-- BIDV QR -->
+    <div id="bidv-section">
+      <img src="https://i.postimg.cc/DzGmyGMd/image.png" alt="QR BIDV" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
+      <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số tài khoản: <span id="account-bidv">0849352801</span></div>
+      <div style="font-size: 14px; color: #666; margin-bottom: 15px;">BIDV - CN NINH THUAN PGD CHO DONG</div>
+      <button onclick="copyAccount('account-bidv')" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#43a047'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)'">Sao chép số tài khoản</button>
+    </div>
 
-      <!-- MoMo QR -->
-      <div style="width: 50%; padding: 10px;">
-        <img src="https://i.postimg.cc/fLqMZTvQ/image.png" alt="QR MoMo" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
-        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số điện thoại: <span id="account-momo">0849352801</span></div>
-        <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Ví MoMo</div>
-        <button onclick="copyAccount('account-momo')" style="background-color: #e83e8c; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#d63384'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#e83e8c'; this.style.transform='scale(1)'">Sao chép số MoMo</button>
-      </div>
+    <!-- MoMo QR -->
+    <div id="momo-section" style="display: none;">
+      <img src="https://i.postimg.cc/fLqMZTvQ/image.png" alt="QR MoMo" style="width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="font-weight: bold; font-size: 16px; color: #333; margin-bottom: 5px;">BUI NGUYEN PHUOC</div>
+      <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Số điện thoại: <span id="account-momo">0849352801</span></div>
+      <div style="font-size: 14px; color: #666; margin-bottom: 15px;">Ví MoMo</div>
+      <button onclick="copyAccount('account-momo')" style="background-color: #e83e8c; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#d63384'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='#e83e8c'; this.style.transform='scale(1)'">Sao chép số MoMo</button>
     </div>
 
     <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px;">
@@ -45,10 +43,12 @@
   }
 
   function switchToMomo() {
-    document.getElementById("slider").style.transform = "translateX(-50%)";
+    document.getElementById("bidv-section").style.display = "none";
+    document.getElementById("momo-section").style.display = "block";
   }
 
   function switchToBIDV() {
-    document.getElementById("slider").style.transform = "translateX(0)";
+    document.getElementById("bidv-section").style.display = "block";
+    document.getElementById("momo-section").style.display = "none";
   }
 </script>
