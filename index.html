@@ -116,8 +116,14 @@
 
 <script>
   function copyAccount(id) {
-    var accountNumber = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(accountNumber);
+    var text = document.getElementById(id).innerText;
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+
     document.getElementById("copy-message").style.display = "block";
     setTimeout(() => {
       document.getElementById("copy-message").style.display = "none";
